@@ -9,10 +9,6 @@ import akka.http.scaladsl.server.Directives._
 final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
   private val routesWithDefinedResponses =
     get {
-      path("status") {
-        complete(HttpEntity(ContentTypes.`application/json`, """{"status":"ok"}"""))
-      }
-    } ~ {
       path("cool-trainers") {
         complete(HttpEntity(ContentTypes.`application/json`, """[{"name":"Javi"},{"name":"Rafa"}]"""))
       }
@@ -28,7 +24,7 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
       * More information: https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/testkit.html
       */
     "respond succesfully while requesting its status" in {
-      Get("/status") ~> routesWithDefinedResponses ~> check {
+      Get("/status") ~> Routes.all ~> check {
         status shouldBe StatusCodes.OK
         contentType shouldBe ContentTypes.`application/json`
         entityAs[String] shouldBe """{"status":"ok"}"""
