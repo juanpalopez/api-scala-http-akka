@@ -10,15 +10,16 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
   private val routesWithDefinedResponses =
     get {
       path("status") {
-        complete(HttpEntity(ContentTypes.`application/json`,"""{"status":"ok"}"""))
+        complete(HttpEntity(ContentTypes.`application/json`, """{"status":"ok"}"""))
       }
     } ~ {
       path("cool-trainers") {
-        complete(HttpEntity(ContentTypes.`application/json`,"""[{"name":"Javi"},{"name":"Rafa"}]"""))
+        complete(HttpEntity(ContentTypes.`application/json`, """[{"name":"Javi"},{"name":"Rafa"}]"""))
       }
     }
 
   "ApiTest" should {
+
     /**
       * This is a really dummy test because with it we're testing nothing but Akka HTTP routing system.
       * As you can see in the routesWithDefinedResponses defined above, we've already provided an implementation.
