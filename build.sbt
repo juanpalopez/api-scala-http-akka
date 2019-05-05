@@ -1,5 +1,5 @@
 /** ********* PROJECT INFO ******************/
-name := "api"
+name := "api-scala-http"
 version := "1.0"
 
 /** ********* PROJECT SETTINGS ******************/
@@ -8,12 +8,6 @@ Configuration.settings
 /** ********* DEPENDENCIES *****************/
 libraryDependencies ++= Dependencies.production
 libraryDependencies ++= Dependencies.test
-
-/** ********* TEST DEPENDENCIES *****************/
-libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-  "org.scalamock" %% "scalamock" % "4.1.0" % Test
-)
 
 /** ********* COMMANDS ALIASES ******************/
 addCommandAlias("t", "test")
