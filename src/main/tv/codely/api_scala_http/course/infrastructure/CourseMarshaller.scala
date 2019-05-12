@@ -38,5 +38,5 @@ object CourseMarshaller {
     }
   }
 
-  implicit val courseFormat: RootJsonFormat[Course] = jsonFormat3(Course.apply(_:CourseId, _:CourseTitle, _:Video))
+  implicit val courseFormat: RootJsonFormat[Course] = jsonFormat3(Course.apply(_: CourseId, _: CourseTitle, _: Video))
 }
