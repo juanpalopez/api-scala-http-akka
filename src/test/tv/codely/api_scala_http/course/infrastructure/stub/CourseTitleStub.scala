@@ -9,7 +9,7 @@ object CourseTitleStub {
 
   def apply(value: String): CourseTitle = CourseTitle(value)
 
-  def random: CourseTitle  = CourseTitle(
+  def random: CourseTitle = CourseTitle(
     StringStub.random(numChars = IntStub.randomBetween(minimumChars, maximumChars))
   )
 }
