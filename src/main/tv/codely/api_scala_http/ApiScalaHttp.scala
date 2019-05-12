@@ -17,8 +17,8 @@ object ApiScalaHttp {
     val host            = serverConfig.getString("http-server.host")
     val port            = serverConfig.getInt("http-server.port")
 
-    implicit val system: ActorSystem = ActorSystem(actorSystemName)
-    implicit val materializer: ActorMaterializer = ActorMaterializer()
+    implicit val system: ActorSystem                        = ActorSystem(actorSystemName)
+    implicit val materializer: ActorMaterializer            = ActorMaterializer()
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
     val bindingFuture = Http().bindAndHandle(Routes.all, host, port)
@@ -26,6 +26,6 @@ object ApiScalaHttp {
     println(s"Server online http://$host:$port/\nPress RETURN to stop...")
     StdIn.readLine()
 
-    bindingFuture.flatMap(_.unbind()).onComplete(_=> system.terminate())
+    bindingFuture.flatMap(_.unbind()).onComplete(_ => system.terminate())
   }
 }
