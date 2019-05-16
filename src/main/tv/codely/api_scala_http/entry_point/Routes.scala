@@ -63,9 +63,6 @@ object Routes extends SprayJsonSupport with DefaultJsonProtocol {
       path("status") {
         complete(HttpEntity(ContentTypes.`application/json`, """{"status":"ok"}"""))
       } ~
-        path("ping") {
-          complete(HttpEntity(ContentTypes.`application/json`, """{"data":"pong"}"""))
-        } ~
         path("cool-trainers") {
           complete(HttpEntity(ContentTypes.`application/json`, """[{"name":"Javi"},{"name":"Rafa"}]"""))
         } ~
