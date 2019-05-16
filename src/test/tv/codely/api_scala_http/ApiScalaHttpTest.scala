@@ -5,12 +5,13 @@ import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{Matchers, WordSpec}
 import spray.json._
-import tv.codely.api_scala_http.course.infrastructure.stub.CourseStub
-import tv.codely.api_scala_http.course.infrastructure.marshaller.CourseMarshaller
-import tv.codely.api_scala_http.user.infrastructure.marshaller.UserMarshaller
-import tv.codely.api_scala_http.user.infrastructure.stubs.UserStub
-import tv.codely.api_scala_http.video.infrastructure.marshaller.VideoMarshaller
-import tv.codely.api_scala_http.video.infrastructure.stub.VideoStub
+import tv.codely.api_scala_http.module.course.infrastructure.stub.CourseStub
+import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseMarshaller
+import tv.codely.api_scala_http.entry_point.Routes
+import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserMarshaller
+import tv.codely.api_scala_http.module.user.infrastructure.stubs.UserStub
+import tv.codely.api_scala_http.module.video.infrastructure.marshaller.VideoMarshaller
+import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 
 import scala.concurrent.duration._
 
