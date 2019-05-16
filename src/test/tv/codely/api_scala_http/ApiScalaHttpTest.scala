@@ -40,13 +40,6 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
         entityAs[String] shouldBe """[{"name":"Javi"},{"name":"Rafa"}]"""
       }
     }
-    "return a PONG when request GET /ping" in {
-      Get("/ping") ~> Routes.all ~> check {
-        status shouldBe StatusCodes.OK
-        contentType shouldBe ContentTypes.`application/json`
-        entityAs[String] shouldBe """{"data":"pong"}"""
-      }
-    }
     "return a list the system users when request GET /users" in {
       Get("/users") ~> Routes.all ~> check {
         val expectedUsers = Seq(
