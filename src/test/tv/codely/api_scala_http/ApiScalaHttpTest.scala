@@ -7,7 +7,8 @@ import org.scalatest.{Matchers, WordSpec}
 import spray.json._
 import tv.codely.api_scala_http.module.course.infrastructure.stub.CourseStub
 import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseMarshaller
-import tv.codely.api_scala_http.entry_point.Routes
+import tv.codely.api_scala_http.entry_point.{EntryPointDependencyContainer, Routes}
+import tv.codely.api_scala_http.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
 import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserMarshaller
 import tv.codely.api_scala_http.module.user.infrastructure.stubs.UserStub
 import tv.codely.api_scala_http.module.video.infrastructure.marshaller.VideoMarshaller
@@ -16,6 +17,9 @@ import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 import scala.concurrent.duration._
 
 final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
+  private val routes = new Routes(
+    new EntryPointDependencyContainer(new UserModuleDependencyContainer)
+  )
 
   "Scala API HTTP Test" should {
 
@@ -27,7 +31,7 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
       * More information: https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/testkit.html
       */
     "respond succesfully while requesting its status" in {
-      Get("/status") ~> Routes.all ~> check {
+      Get("/status") ~> routes.all ~> check {
         status shouldBe StatusCodes.OK
         contentType shouldBe ContentTypes.`application/json`
         entityAs[String] shouldBe """{"status":"ok"}"""
@@ -41,7 +45,7 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
 //      }
 //    }
     "return a list the system users when request GET /users" in {
-      Get("/users") ~> Routes.all ~> check {
+      Get("/users") ~> routes.all ~> check {
         val expectedUsers = Seq(
           UserStub(id = "deacd129-d419-4552-9bfc-0723c3c4f56a", name = "Edufasio"),
           UserStub(id = "b62f767f-7160-4405-a4af-39ebb3635c17", name = "Edonisio")
@@ -53,7 +57,7 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
       }
     }
     "return all the system video when request GET /videos" in {
-      Get("/videos") ~> Routes.all ~> check {
+      Get("/videos") ~> routes.all ~> check {
         val expectedVideos = Seq(
           VideoStub(
             id = "3dfb19ee-260b-420a-b08c-ed58a7a07aee",
@@ -75,7 +79,7 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
       }
     }
     "return all the system courses when request GET /courses" in {
-      Get("/courses") ~> Routes.all ~> check {
+      Get("/courses") ~> routes.all ~> check {
         val expectedCourses = Seq(
           CourseStub(
             id="e295ecdf-ba69-4672-a34f-400bfc3473df",
