@@ -1,56 +1,29 @@
-package tv.codely.api_scala_http
+package tv.codely.api_scala_http.entry_point
 
 import akka.http.scaladsl.model._
-import akka.http.scaladsl.testkit.ScalatestRouteTest
-import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{Matchers, WordSpec}
 import spray.json._
+import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseJsValueMarshaller
 import tv.codely.api_scala_http.module.course.infrastructure.stub.CourseStub
-import tv.codely.api_scala_http.entry_point.{EntryPointDependencyContainer, Routes}
-import tv.codely.api_scala_http.module.course.infrastructure.CourseMarshaller
-import tv.codely.api_scala_http.module.course.infrastructure.dependency_injection.CourseModuleDependencyContainer
-import tv.codely.api_scala_http.module.user.infrastructure.UserMarshaller
-import tv.codely.api_scala_http.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
+import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserJsValueMarshaller
 import tv.codely.api_scala_http.module.user.infrastructure.stub.UserStub
-import tv.codely.api_scala_http.module.video.infrastructure.VideoMarshaller
-import tv.codely.api_scala_http.module.video.infrastructure.dependency_injection.VideoModuleDependencyContainer
+import tv.codely.api_scala_http.module.video.infrastructure.marshaller.VideoJsValueMarshaller
 import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 
 import scala.concurrent.duration._
 
-final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
-  private val routes = new Routes(
-    new EntryPointDependencyContainer(
-      new UserModuleDependencyContainer,
-      new VideoModuleDependencyContainer,
-      new CourseModuleDependencyContainer)
-  )
+final class ApiScalaHttpTest extends AcceptanceSpec {
 
   "Scala API HTTP Test" should {
 
-    /**
-      * This is a really dummy test because with it we're testing nothing but Akka HTTP routing system.
-      * As you can see in the routesWithDefinedResponses defined above, we've already provided an implementation.
-      *
-      * However, this is useful to start digging a little in how Akka HTTP testkit works and so on.
-      * More information: https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/testkit.html
-      */
     "respond succesfully while requesting its status" in {
-      Get("/status") ~> routes.all ~> check {
+      get("/status") {
         status shouldBe StatusCodes.OK
         contentType shouldBe ContentTypes.`application/json`
         entityAs[String] shouldBe """{"status":"ok"}"""
       }
     }
-//    "return a list of cool trainers for request GET /cool-trainers" in {
-//      Get("/cool-trainers") ~> Routes.all ~> check {
-//        status shouldBe StatusCodes.OK
-//        contentType shouldBe ContentTypes.`application/json`
-//        entityAs[String] shouldBe """[{"name":"Javi"},{"name":"Rafa"}]"""
-//      }
-//    }
     "return a list the system users when request GET /users" in {
-      Get("/users") ~> routes.all ~> check {
+      get("/users")  {
         val expectedUsers = Seq(
           UserStub(id = "deacd129-d419-4552-9bfc-0723c3c4f56a", name = "Edufasio"),
           UserStub(id = "b62f767f-7160-4405-a4af-39ebb3635c17", name = "Edonisio")
@@ -58,11 +31,11 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
 
         status shouldBe StatusCodes.OK
         contentType shouldBe ContentTypes.`application/json`
-        entityAs[String].parseJson shouldBe UserMarshaller.marshall(expectedUsers)
+        entityAs[String].parseJson shouldBe UserJsValueMarshaller.marshall(expectedUsers)
       }
     }
     "return all the system video when request GET /videos" in {
-      Get("/videos") ~> routes.all ~> check {
+      get("/videos") {
         val expectedVideos = Seq(
           VideoStub(
             id = "3dfb19ee-260b-420a-b08c-ed58a7a07aee",
@@ -80,11 +53,11 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
 
         status shouldBe StatusCodes.OK
         contentType shouldBe ContentTypes.`application/json`
-        entityAs[String].parseJson shouldBe VideoMarshaller.marshall(expectedVideos)
+        entityAs[String].parseJson shouldBe VideoJsValueMarshaller.marshall(expectedVideos)
       }
     }
     "return all the system courses when request GET /courses" in {
-      Get("/courses") ~> routes.all ~> check {
+      get("/courses") {
         val expectedCourses = Seq(
           CourseStub(
             id="e295ecdf-ba69-4672-a34f-400bfc3473df",
@@ -110,7 +83,7 @@ final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures wi
 
         status shouldBe StatusCodes.OK
         contentType shouldBe ContentTypes.`application/json`
-        entityAs[String].parseJson shouldBe CourseMarshaller.marshall(expectedCourses)
+        entityAs[String].parseJson shouldBe CourseJsValueMarshaller.marshall(expectedCourses)
       }
     }
   }

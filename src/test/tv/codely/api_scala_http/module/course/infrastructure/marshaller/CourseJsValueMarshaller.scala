@@ -1,9 +1,9 @@
-package tv.codely.api_scala_http.module.course.infrastructure
+package tv.codely.api_scala_http.module.course.infrastructure.marshaller
 
 import spray.json.{JsArray, JsNumber, JsObject, JsString}
 import tv.codely.api_scala_http.module.course.domain.Course
 
-object CourseMarshaller {
+object CourseJsValueMarshaller {
   def marshall(courses: Seq[Course]): JsArray = JsArray(
     courses
       .map(

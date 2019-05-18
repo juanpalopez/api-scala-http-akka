@@ -2,7 +2,7 @@ package tv.codely.api_scala_http.module.user.infrastructure.stub
 
 import java.util.UUID
 
-import tv.codely.api_scala_http.shared.infrastructure.UuidStub
+import tv.codely.api_scala_http.module.shared.stub.UuidStub
 import tv.codely.api_scala_http.module.user.domain.UserId
 
 object UserIdStub {
