@@ -2,7 +2,6 @@ package tv.codely.api_scala_http.module.course.infrastructure.stub
 
 import tv.codely.api_scala_http.module.course.domain.CourseTitle
 import tv.codely.api_scala_http.module.shared.stub.{IntStub, StringStub}
-import tv.codely.api_scala_http.shared.infrastructure.StringStub
 
 object CourseTitleStub {
   private val minimumChars = 1

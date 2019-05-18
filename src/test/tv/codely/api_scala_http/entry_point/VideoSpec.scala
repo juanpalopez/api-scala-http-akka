@@ -9,19 +9,26 @@ import scala.concurrent.duration._
 
 
 final class VideoSpec extends AcceptanceSpec {
+  "save a video" in post("/videos",
+    """
+      |{
+      |  "id": "a11098af-d352-4cce-8372-2b48b97e6942",
+      |  "title": "🎥 Entrevista a SergiGP, de troll a developer!",
+      |  "duration_in_seconds": 15,
+      |  "category": "Interview"
+      |}
+    """.stripMargin
+  ) {
+    status shouldBe StatusCodes.NoContent
+  }
+
   "return all the system video when request GET /videos" in {
     get("/videos") {
       val expectedVideos = Seq(
         VideoStub(
-          id = "3dfb19ee-260b-420a-b08c-ed58a7a07aee",
-          title = "🎥 Scala FTW vol. 1",
-          duration = 1.minute,
-          category = "Screencast"
-        ),
-        VideoStub(
-          id = "7341b1fc-3d80-4f6a-bcde-4fef86b01f97",
-          title = "🔝 Interview with Odersky",
-          duration = 30.minutes,
+          id = "a11098af-d352-4cce-8372-2b48b97e6942",
+          title = "🎥 Entrevista a SergiGP, de troll a developer!",
+          duration = 15.seconds,
           category = "Interview"
         )
       )

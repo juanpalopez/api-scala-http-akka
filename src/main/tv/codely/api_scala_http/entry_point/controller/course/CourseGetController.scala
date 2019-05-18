@@ -8,6 +8,6 @@ import tv.codely.api_scala_http.module.course.application.CoursesSearcher
 
 import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseMarshaller._
 
-final class CourseGetController (searcher: CoursesSearcher) extends SprayJsonSupport with DefaultJsonProtocol{
+final class CourseGetController(searcher: CoursesSearcher) extends SprayJsonSupport with DefaultJsonProtocol {
   def get(): StandardRoute = complete(searcher.searchAll())
 }

@@ -6,11 +6,20 @@ import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserJsValu
 import tv.codely.api_scala_http.module.user.infrastructure.stub.UserStub
 
 final class UserSpec extends AcceptanceSpec {
+  "save a user" in post("/users",
+    """
+      |{
+      |  "id": "deacd129-d419-4552-9bfc-0723c3c4f56a",
+      |  "name": "Edufasio"
+      |}
+    """.stripMargin
+  ) {
+    status shouldBe StatusCodes.NoContent
+  }
   "return a list the system users when request GET /users" in {
     get("/users")  {
       val expectedUsers = Seq(
         UserStub(id = "deacd129-d419-4552-9bfc-0723c3c4f56a", name = "Edufasio"),
-        UserStub(id = "b62f767f-7160-4405-a4af-39ebb3635c17", name = "Edonisio")
       )
 
       status shouldBe StatusCodes.OK

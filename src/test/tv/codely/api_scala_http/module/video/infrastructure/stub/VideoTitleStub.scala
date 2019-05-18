@@ -1,7 +1,6 @@
 package tv.codely.api_scala_http.module.video.infrastructure.stub
 
 import tv.codely.api_scala_http.module.shared.stub.{IntStub, StringStub}
-import tv.codely.api_scala_http.shared.infrastructure.StringStub
 import tv.codely.api_scala_http.module.video.domain.VideoTitle
 
 object VideoTitleStub {
