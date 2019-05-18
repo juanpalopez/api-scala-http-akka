@@ -1,4 +1,4 @@
-package tv.codely.api_scala_http.module.course.infrastructure.marshaller
+package tv.codely.api_scala_http.module.course.infrastructure
 
 import spray.json.{JsArray, JsNumber, JsObject, JsString}
 import tv.codely.api_scala_http.module.course.domain.Course

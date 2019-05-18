@@ -1,4 +1,4 @@
-package tv.codely.api_scala_http.module.course.infrastructure
+package tv.codely.api_scala_http.module.course.infrastructure.marshaller
 
 import java.util.UUID
 
@@ -6,7 +6,7 @@ import spray.json.DefaultJsonProtocol._
 import spray.json.{DeserializationException, JsString, JsValue, JsonFormat, RootJsonFormat}
 import tv.codely.api_scala_http.module.course.domain.{Course, CourseId, CourseTitle}
 import tv.codely.api_scala_http.module.video.domain.Video
-import tv.codely.api_scala_http.module.video.infrastructure.VideoMarshaller._
+import tv.codely.api_scala_http.module.video.infrastructure.marshaller.VideoMarshaller._
 
 object CourseMarshaller {
   implicit object UuidMarshaller extends JsonFormat[UUID] {

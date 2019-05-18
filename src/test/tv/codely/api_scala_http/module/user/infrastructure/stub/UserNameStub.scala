@@ -1,4 +1,4 @@
-package tv.codely.api_scala_http.module.user.infrastructure.stubs
+package tv.codely.api_scala_http.module.user.infrastructure.stub
 
 import tv.codely.api_scala_http.shared.infrastructure.{IntStub, StringStub}
 import tv.codely.api_scala_http.module.user.domain.UserName

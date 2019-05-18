@@ -1,4 +1,4 @@
-package tv.codely.api_scala_http.module.video.infrastructure
+package tv.codely.api_scala_http.module.video.infrastructure.marshaller
 
 import java.util.UUID
 

@@ -6,19 +6,24 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{Matchers, WordSpec}
 import spray.json._
 import tv.codely.api_scala_http.module.course.infrastructure.stub.CourseStub
-import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseMarshaller
 import tv.codely.api_scala_http.entry_point.{EntryPointDependencyContainer, Routes}
+import tv.codely.api_scala_http.module.course.infrastructure.CourseMarshaller
+import tv.codely.api_scala_http.module.course.infrastructure.dependency_injection.CourseModuleDependencyContainer
+import tv.codely.api_scala_http.module.user.infrastructure.UserMarshaller
 import tv.codely.api_scala_http.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
-import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserMarshaller
-import tv.codely.api_scala_http.module.user.infrastructure.stubs.UserStub
-import tv.codely.api_scala_http.module.video.infrastructure.marshaller.VideoMarshaller
+import tv.codely.api_scala_http.module.user.infrastructure.stub.UserStub
+import tv.codely.api_scala_http.module.video.infrastructure.VideoMarshaller
+import tv.codely.api_scala_http.module.video.infrastructure.dependency_injection.VideoModuleDependencyContainer
 import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 
 import scala.concurrent.duration._
 
 final class ApiScalaHttpTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
   private val routes = new Routes(
-    new EntryPointDependencyContainer(new UserModuleDependencyContainer)
+    new EntryPointDependencyContainer(
+      new UserModuleDependencyContainer,
+      new VideoModuleDependencyContainer,
+      new CourseModuleDependencyContainer)
   )
 
   "Scala API HTTP Test" should {

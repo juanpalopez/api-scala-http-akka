@@ -1,4 +1,4 @@
-package tv.codely.api_scala_http.module.user.infrastructure.marshaller
+package tv.codely.api_scala_http.module.user.infrastructure
 
 import spray.json.{JsArray, JsObject, JsString}
 import tv.codely.api_scala_http.module.user.domain.User

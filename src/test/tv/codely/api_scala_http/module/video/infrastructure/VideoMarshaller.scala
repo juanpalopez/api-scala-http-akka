@@ -1,4 +1,4 @@
-package tv.codely.api_scala_http.module.video.infrastructure.marshaller
+package tv.codely.api_scala_http.module.video.infrastructure
 
 import spray.json.{JsArray, JsNumber, JsObject, JsString}
 import tv.codely.api_scala_http.module.video.domain.Video
