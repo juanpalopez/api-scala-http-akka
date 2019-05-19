@@ -7,19 +7,21 @@ import tv.codely.api_scala_http.module.user.infrastructure.stub.UserStub
 
 final class UserSpec extends AcceptanceSpec {
   "save a user" in post("/users",
-    """
+                        """
       |{
       |  "id": "deacd129-d419-4552-9bfc-0723c3c4f56a",
       |  "name": "Edufasio"
       |}
-    """.stripMargin
-  ) {
+    """.stripMargin) {
     status shouldBe StatusCodes.NoContent
   }
   "return a list the system users when request GET /users" in {
-    get("/users")  {
+    get("/users") {
       val expectedUsers = Seq(
-        UserStub(id = "deacd129-d419-4552-9bfc-0723c3c4f56a", name = "Edufasio"),
+        UserStub(
+          id = "deacd129-d419-4552-9bfc-0723c3c4f56a",
+          name = "Edufasio"
+        )
       )
 
       status shouldBe StatusCodes.OK

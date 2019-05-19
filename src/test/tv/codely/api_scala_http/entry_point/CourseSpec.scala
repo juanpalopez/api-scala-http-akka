@@ -8,8 +8,9 @@ import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 
 import scala.concurrent.duration._
 
-final class CourseSpec extends  AcceptanceSpec {
-  "save a course" in post("/courses",
+final class CourseSpec extends AcceptanceSpec {
+  "save a course" in post(
+    "/courses",
     """
       |{
       |  "id": "e295ecdf-ba69-4672-a34f-400bfc3473df",
@@ -27,11 +28,11 @@ final class CourseSpec extends  AcceptanceSpec {
     get("/courses") {
       val expectedCourses = Seq(
         CourseStub(
-          id="e295ecdf-ba69-4672-a34f-400bfc3473df",
-          title="Intro to Scala",
-          video=VideoStub(
-            id="2bccec03-c15d-46dd-9884-d0d8e554ed56",
-            title="What is Functional Programming",
+          id = "e295ecdf-ba69-4672-a34f-400bfc3473df",
+          title = "Intro to Scala",
+          video = VideoStub(
+            id = "2bccec03-c15d-46dd-9884-d0d8e554ed56",
+            title = "What is Functional Programming",
             duration = 30.minutes,
             category = "Screencast"
           )

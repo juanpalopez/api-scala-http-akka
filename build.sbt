@@ -24,4 +24,4 @@ addCommandAlias("tf", "test:scalafmt")       // Format test files according to S
 addCommandAlias("tfc", "test:scalafmtCheck") // Check if test files are formatted according to ScalaFmt
 
 // All the needed tasks before pushing to the repository (compile, compile test, format check in prod and test)
-addCommandAlias("prep", ";c;tc;fc;tfc")
+addCommandAlias("prep", ";c;tc;fc;tf;tfc")

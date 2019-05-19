@@ -7,9 +7,9 @@ import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 
 import scala.concurrent.duration._
 
-
 final class VideoSpec extends AcceptanceSpec {
-  "save a video" in post("/videos",
+  "save a video" in post(
+    "/videos",
     """
       |{
       |  "id": "a11098af-d352-4cce-8372-2b48b97e6942",

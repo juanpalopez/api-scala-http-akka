@@ -9,13 +9,16 @@ object CourseJsValueMarshaller {
       .map(
         c =>
           JsObject(
-          "id" -> JsString(c.id.toString),
-          "title" -> JsString(c.title.value),
-          "video" -> JsObject("id"->JsString(c.video.id.toString),
-                              "title"->JsString(c.video.title.value),
-                              "duration"-> JsNumber(c.video.duration.toSeconds),
-                              "category"-> JsString(c.video.category.toString))/*VideoMarshaller.marshall(Seq(c.video))*/
+            "id"    -> JsString(c.id.toString),
+            "title" -> JsString(c.title.value),
+            "video" -> JsObject(
+              "id"       -> JsString(c.video.id.toString),
+              "title"    -> JsString(c.video.title.value),
+              "duration" -> JsNumber(c.video.duration.toSeconds),
+              "category" -> JsString(c.video.category.toString)
+            ) /*VideoMarshaller.marshall(Seq(c.video))*/
         )
-      ).toVector
+      )
+      .toVector
   )
 }
