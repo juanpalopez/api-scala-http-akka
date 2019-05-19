@@ -10,14 +10,17 @@ import tv.codely.api_scala_http.module.video.domain._
 
 import scala.concurrent.duration.Duration
 
-final class CoursePostController(creator:CourseCreator){
-  def post(id:String, title:String, videoId:String, videoTitle:String, videoDuration:Duration, videoCategory:String):StandardRoute ={
-    creator.create(CourseId(id), CourseTitle(title),Video(VideoId(videoId),
-                                                          VideoTitle(videoTitle),
-                                                          VideoDuration(videoDuration),
-                                                          VideoCategory(videoCategory)
-                                                          )
-    )
+final class CoursePostController(creator: CourseCreator) {
+  def post(id: String,
+           title: String,
+           videoId: String,
+           videoTitle: String,
+           videoDuration: Duration,
+           videoCategory: String): StandardRoute = {
+    creator.create(
+      CourseId(id),
+      CourseTitle(title),
+      Video(VideoId(videoId), VideoTitle(videoTitle), VideoDuration(videoDuration), VideoCategory(videoCategory)))
     complete(HttpResponse(NoContent))
   }
 }

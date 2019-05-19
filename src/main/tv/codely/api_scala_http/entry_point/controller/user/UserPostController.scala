@@ -8,7 +8,7 @@ import tv.codely.api_scala_http.module.user.application.UserCreator
 import tv.codely.api_scala_http.module.user.domain.{UserId, UserName}
 
 final class UserPostController(creator: UserCreator) {
-  def post(id:String, name:String): StandardRoute = {
+  def post(id: String, name: String): StandardRoute = {
     creator.create(UserId(id), UserName(name))
     complete(HttpResponse(NoContent))
   }

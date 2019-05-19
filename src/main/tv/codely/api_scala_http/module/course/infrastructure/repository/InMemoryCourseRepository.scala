@@ -3,7 +3,7 @@ package tv.codely.api_scala_http.module.course.infrastructure.repository
 import tv.codely.api_scala_http.module.course.domain.{Course, CourseRepository}
 
 final class InMemoryCourseRepository extends CourseRepository {
-  private var courses:Seq[Course] = Seq[Course]()
+  private var courses: Seq[Course] = Seq[Course]()
 
   def all(): Seq[Course] = courses
 

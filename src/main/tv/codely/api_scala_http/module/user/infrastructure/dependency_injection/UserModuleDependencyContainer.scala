@@ -6,5 +6,5 @@ import tv.codely.api_scala_http.module.user.infrastructure.repository.InMemoryUs
 final class UserModuleDependencyContainer {
   val repository    = new InMemoryUserRepository
   val usersSearcher = new UsersSearcher(repository)
-  val userCreator = new UserCreator(repository)
+  val userCreator   = new UserCreator(repository)
 }

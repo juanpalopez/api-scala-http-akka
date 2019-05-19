@@ -17,44 +17,42 @@ final class Routes(container: EntryPointDependencyContainer) {
         path("videos")(container.videoGetController.get()) ~
         path("courses")(container.courseGetController.get())
     } ~
-    post {
-      path("videos") {
-        jsonBody { body =>
-
-          container.videoPostController.post(
-            body("id").convertTo[String],
-            body("title").convertTo[String],
-            body("duration_in_seconds").convertTo[Int].seconds,
-            body("category").convertTo[String]
-          )
+      post {
+        path("videos") {
+          jsonBody { body =>
+            container.videoPostController.post(
+              body("id").convertTo[String],
+              body("title").convertTo[String],
+              body("duration_in_seconds").convertTo[Int].seconds,
+              body("category").convertTo[String]
+            )
+          }
+        }
+      } ~
+      post {
+        path("users") {
+          jsonBody { body =>
+            container.userPostController.post(
+              body("id").convertTo[String],
+              body("name").convertTo[String],
+            )
+          }
+        }
+      } ~
+      post {
+        path("courses") {
+          jsonBody { body =>
+            container.coursePostController.post(
+              body("id").convertTo[String],
+              body("title").convertTo[String],
+              body("videoId").convertTo[String],
+              body("videoTitle").convertTo[String],
+              body("duration_in_minutes").convertTo[Int].minutes,
+              body("videoCategory").convertTo[String]
+            )
+          }
         }
       }
-    } ~
-    post {
-      path("users") {
-        jsonBody { body =>
-
-          container.userPostController.post(
-            body("id").convertTo[String],
-            body("name").convertTo[String],
-          )
-        }
-      }
-    } ~
-    post {
-      path("courses") {
-        jsonBody { body =>
-          container.coursePostController.post(
-            body("id").convertTo[String],
-            body("title").convertTo[String],
-            body("videoId").convertTo[String],
-            body("videoTitle").convertTo[String],
-            body("duration_in_minutes").convertTo[Int].minutes,
-            body("videoCategory").convertTo[String]
-          )
-        }
-      }
-    }
   private def jsonBody[T](handler: Map[String, JsValue] => Route): Route =
     entity(as[JsValue])(json => handler(json.asJsObject.fields))
 }

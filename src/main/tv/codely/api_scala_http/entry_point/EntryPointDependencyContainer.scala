@@ -15,11 +15,11 @@ final class EntryPointDependencyContainer(
 ) {
   val statusGetController = new StatusGetController
   val userGetController   = new UserGetController(userDependencies.usersSearcher)
-  val userPostController = new UserPostController(userDependencies.userCreator)
+  val userPostController  = new UserPostController(userDependencies.userCreator)
 
   val videoGetController  = new VideoGetController(videoDependencies.videosSearcher)
   val videoPostController = new VideoPostController(videoDependencies.videoCreator)
 
-  val courseGetController = new CourseGetController(courseDependencies.coursesSearcher)
+  val courseGetController  = new CourseGetController(courseDependencies.coursesSearcher)
   val coursePostController = new CoursePostController(courseDependencies.courseCreator)
 }
