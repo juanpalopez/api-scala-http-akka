@@ -5,11 +5,11 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.StandardRoute
 import spray.json.DefaultJsonProtocol
 import tv.codely.api_scala_http.module.user.application.UsersSearcher
-import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserMarshaller._
+import tv.codely.api_scala_http.module.user.infrastructure.UserMarshaller._
 
 final class UserGetController(searcher: UsersSearcher) extends SprayJsonSupport with DefaultJsonProtocol {
 
   def get(): StandardRoute = {
-    complete(searcher.searchAll())
+    complete(searcher.all())
   }
 }

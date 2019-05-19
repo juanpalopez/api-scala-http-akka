@@ -5,9 +5,9 @@ import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.util.ByteString
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{Matchers, WordSpec}
-import tv.codely.api_scala_http.module.course.infrastructure.dependency_injection.CourseModuleDependencyContainer
-import tv.codely.api_scala_http.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
-import tv.codely.api_scala_http.module.video.infrastructure.dependency_injection.VideoModuleDependencyContainer
+import tv.codely.api_scala_http.module.course.dependency_injection.CourseModuleDependencyContainer
+import tv.codely.api_scala_http.module.user.dependency_injection.UserModuleDependencyContainer
+import tv.codely.api_scala_http.module.video.dependency_injection.VideoModuleDependencyContainer
 
 protected[entry_point] abstract class AcceptanceSpec
     extends WordSpec

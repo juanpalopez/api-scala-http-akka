@@ -4,9 +4,9 @@ import tv.codely.api_scala_http.entry_point.controller.course.{CourseGetControll
 import tv.codely.api_scala_http.entry_point.controller.status.StatusGetController
 import tv.codely.api_scala_http.entry_point.controller.user.{UserGetController, UserPostController}
 import tv.codely.api_scala_http.entry_point.controller.video.{VideoGetController, VideoPostController}
-import tv.codely.api_scala_http.module.course.infrastructure.dependency_injection.CourseModuleDependencyContainer
-import tv.codely.api_scala_http.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
-import tv.codely.api_scala_http.module.video.infrastructure.dependency_injection.VideoModuleDependencyContainer
+import tv.codely.api_scala_http.module.course.dependency_injection.CourseModuleDependencyContainer
+import tv.codely.api_scala_http.module.user.dependency_injection.UserModuleDependencyContainer
+import tv.codely.api_scala_http.module.video.dependency_injection.VideoModuleDependencyContainer
 
 final class EntryPointDependencyContainer(
     userDependencies: UserModuleDependencyContainer,

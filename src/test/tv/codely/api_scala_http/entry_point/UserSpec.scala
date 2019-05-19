@@ -2,8 +2,8 @@ package tv.codely.api_scala_http.entry_point
 
 import spray.json._
 import akka.http.scaladsl.model._
+import tv.codely.api_scala_http.module.user.domain.UserStub
 import tv.codely.api_scala_http.module.user.infrastructure.marshaller.UserJsValueMarshaller
-import tv.codely.api_scala_http.module.user.infrastructure.stub.UserStub
 
 final class UserSpec extends AcceptanceSpec {
   "save a user" in post("/users",

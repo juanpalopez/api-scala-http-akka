@@ -2,8 +2,8 @@ package tv.codely.api_scala_http.entry_point
 
 import akka.http.scaladsl.model._
 import spray.json._
+import tv.codely.api_scala_http.module.video.domain.VideoStub
 import tv.codely.api_scala_http.module.video.infrastructure.marshaller.VideoJsValueMarshaller
-import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
 
 import scala.concurrent.duration._
 

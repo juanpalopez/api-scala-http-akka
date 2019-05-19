@@ -5,9 +5,8 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.StandardRoute
 import spray.json.DefaultJsonProtocol
 import tv.codely.api_scala_http.module.course.application.CoursesSearcher
-
-import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseMarshaller._
+import tv.codely.api_scala_http.module.course.infrastructure.CourseMarshaller._
 
 final class CourseGetController(searcher: CoursesSearcher) extends SprayJsonSupport with DefaultJsonProtocol {
-  def get(): StandardRoute = complete(searcher.searchAll())
+  def get(): StandardRoute = complete(searcher.all())
 }

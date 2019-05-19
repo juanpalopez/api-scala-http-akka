@@ -2,9 +2,9 @@ package tv.codely.api_scala_http.entry_point
 
 import akka.http.scaladsl.model._
 import spray.json._
+import tv.codely.api_scala_http.module.course.domain.CourseStub
 import tv.codely.api_scala_http.module.course.infrastructure.marshaller.CourseJsValueMarshaller
-import tv.codely.api_scala_http.module.course.infrastructure.stub.CourseStub
-import tv.codely.api_scala_http.module.video.infrastructure.stub.VideoStub
+import tv.codely.api_scala_http.module.video.domain.VideoStub
 
 import scala.concurrent.duration._
 
