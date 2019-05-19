@@ -13,7 +13,7 @@ final class CourseSearcherTest extends  CourseUnitTestCase{
       val existingCourses = Seq(existingCourse,anotherExistingCourse)
 
 
-      shouldSearchAllCourses(existingCourses)
+      repositoryShouldSearchAllCourses(existingCourses)
       searcher.all() shouldBe existingCourses
     }
   }

@@ -10,7 +10,7 @@ final class CourseCreatorTest extends CourseUnitTestCase{
     "save a course" in {
       val course = CourseStub.random
 
-      shouldSaveCourse(course)
+      repositoryShouldSaveCourse(course)
 
       creator.create(course.id, course.title, course.video) should be()
     }

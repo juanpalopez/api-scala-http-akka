@@ -10,7 +10,7 @@ private class VideoCreatorTest extends VideoUnitTestCase{
     "Save a video" in {
       val video = VideoStub.random
 
-      shouldSaveVideo(video)
+      repositoryShouldSaveVideo(video)
 
       creator.create(video.id, video.title, video.duration, video.category) should be ()
     }
