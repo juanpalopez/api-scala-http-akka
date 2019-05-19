@@ -3,7 +3,6 @@ package tv.codely.api_scala_http.module.user.application
 import tv.codely.api_scala_http.module.user.UserUnitTestCase
 import tv.codely.api_scala_http.module.user.domain.UserStub
 
-
 final class UsersSearcherTest extends UserUnitTestCase {
   private val searcher = new UsersSearcher(repository)
 
@@ -15,7 +14,7 @@ final class UsersSearcherTest extends UserUnitTestCase {
 
       repositoryShouldSearchAllUsers(existingUsers)
 
-      searcher.all() should be (existingUsers)
+      searcher.all() should be(existingUsers)
     }
   }
 }

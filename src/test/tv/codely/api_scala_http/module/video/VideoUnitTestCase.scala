@@ -7,11 +7,11 @@ protected[video] trait VideoUnitTestCase extends UnitTestCase {
 
   protected def repositoryShouldSearchAllVideos(videos: Seq[Video]): Unit =
     (repository.all _)
-    .expects()
-    .returning(videos)
+      .expects()
+      .returning(videos)
 
   protected def repositoryShouldSaveVideo(video: Video): Unit =
     (repository.save _)
-    .expects(video)
-    .returning()
+      .expects(video)
+      .returning()
 }

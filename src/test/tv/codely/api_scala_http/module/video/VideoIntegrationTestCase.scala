@@ -5,6 +5,6 @@ import tv.codely.api_scala_http.module.video.dependency_injection.VideoModuleDep
 import tv.codely.api_scala_http.module.video.repository.InMemoryVideoRepository
 
 protected[video] trait VideoIntegrationTestCase extends IntegrationTestCase {
-  private val container = new VideoModuleDependencyContainer
+  private val container                             = new VideoModuleDependencyContainer
   protected val repository: InMemoryVideoRepository = container.repository
 }

@@ -16,48 +16,48 @@ final class Routes(container: EntryPointDependencyContainer) {
 
   private val user = get {
     path("users")(container.userGetController.get())
-    } ~ post {
-      path("users") {
-        jsonBody { body =>
-          container.userPostController.post(
-            body("id").convertTo[String],
-            body("name").convertTo[String],
-          )
-        }
+  } ~ post {
+    path("users") {
+      jsonBody { body =>
+        container.userPostController.post(
+          body("id").convertTo[String],
+          body("name").convertTo[String],
+        )
       }
     }
+  }
 
   private val video = get {
     path("videos")(container.videoGetController.get())
-    } ~ post {
-      path("videos") {
-        jsonBody { body =>
-          container.videoPostController.post(
-            body("id").convertTo[String],
-            body("title").convertTo[String],
-            body("duration_in_seconds").convertTo[Int].seconds,
-            body("category").convertTo[String]
-          )
-        }
+  } ~ post {
+    path("videos") {
+      jsonBody { body =>
+        container.videoPostController.post(
+          body("id").convertTo[String],
+          body("title").convertTo[String],
+          body("duration_in_seconds").convertTo[Int].seconds,
+          body("category").convertTo[String]
+        )
       }
     }
+  }
 
   private val course = get {
     path("courses")(container.courseGetController.get())
-    } ~ post {
-      path("courses") {
-        jsonBody { body =>
-          container.coursePostController.post(
-            body("id").convertTo[String],
-            body("title").convertTo[String],
-            body("videoId").convertTo[String],
-            body("videoTitle").convertTo[String],
-            body("duration_in_minutes").convertTo[Int].minutes,
-            body("videoCategory").convertTo[String]
-          )
-        }
+  } ~ post {
+    path("courses") {
+      jsonBody { body =>
+        container.coursePostController.post(
+          body("id").convertTo[String],
+          body("title").convertTo[String],
+          body("videoId").convertTo[String],
+          body("videoTitle").convertTo[String],
+          body("duration_in_minutes").convertTo[Int].minutes,
+          body("videoCategory").convertTo[String]
+        )
       }
     }
+  }
 
   val all: Route = status ~ user ~ video ~ course
 
