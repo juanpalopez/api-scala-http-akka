@@ -8,13 +8,8 @@ import tv.codely.api_scala_http.module.course.application.CourseCreator
 import tv.codely.api_scala_http.module.course.domain.{CourseDescription, CourseId, CourseTitle}
 
 final class CoursePostController(creator: CourseCreator) {
-  def post(id: String,
-           title: String,
-           description: String): StandardRoute = {
-    creator.create(
-      CourseId(id),
-      CourseTitle(title),
-      CourseDescription(description))
+  def post(id: String, title: String, description: String): StandardRoute = {
+    creator.create(CourseId(id), CourseTitle(title), CourseDescription(description))
     complete(HttpResponse(NoContent))
   }
 }
