@@ -36,7 +36,8 @@ final class Routes(container: EntryPointDependencyContainer) {
           body("id").convertTo[String],
           body("title").convertTo[String],
           body("duration_in_seconds").convertTo[Int].seconds,
-          body("category").convertTo[String]
+          body("category").convertTo[String],
+          body("courseId").convertTo[String]
         )
       }
     }
@@ -50,10 +51,7 @@ final class Routes(container: EntryPointDependencyContainer) {
         container.coursePostController.post(
           body("id").convertTo[String],
           body("title").convertTo[String],
-          body("videoId").convertTo[String],
-          body("videoTitle").convertTo[String],
-          body("duration_in_minutes").convertTo[Int].minutes,
-          body("videoCategory").convertTo[String]
+          body("description").convertTo[String]
         )
       }
     }

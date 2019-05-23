@@ -4,7 +4,9 @@ import java.util.UUID
 
 import spray.json.DefaultJsonProtocol._
 import spray.json.{DeserializationException, JsNumber, JsString, JsValue, JsonFormat, RootJsonFormat}
+import tv.codely.api_scala_http.module.course.domain.CourseId
 import tv.codely.api_scala_http.module.video.domain._
+import tv.codely.api_scala_http.module.course.infrastructure.CourseMarshaller.CourseIdMarshaller
 
 object VideoMarshaller {
 
@@ -54,6 +56,6 @@ object VideoMarshaller {
     }
   }
 
-  implicit val videoFormat: RootJsonFormat[Video] = jsonFormat4(
-    Video.apply(_: VideoId, _: VideoTitle, _: VideoDuration, _: VideoCategory))
+  implicit val videoFormat: RootJsonFormat[Video] = jsonFormat5(
+    Video.apply(_: VideoId, _: VideoTitle, _: VideoDuration, _: VideoCategory, _:CourseId))
 }

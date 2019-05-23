@@ -12,7 +12,7 @@ final class CourseCreatorTest extends CourseUnitTestCase {
 
       repositoryShouldSaveCourse(course)
 
-      creator.create(course.id, course.title, course.video) should be()
+      creator.create(course.id, course.title, course.description) should be()
     }
   }
 }

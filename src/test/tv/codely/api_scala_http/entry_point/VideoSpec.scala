@@ -15,7 +15,8 @@ final class VideoSpec extends AcceptanceSpec {
       |  "id": "a11098af-d352-4cce-8372-2b48b97e6942",
       |  "title": "🎥 Entrevista a SergiGP, de troll a developer!",
       |  "duration_in_seconds": 15,
-      |  "category": "Interview"
+      |  "category": "Interview",
+      |  "courseId": "e295ecdf-ba69-4672-a34f-400bfc3473df"
       |}
     """.stripMargin
   ) {
@@ -29,7 +30,8 @@ final class VideoSpec extends AcceptanceSpec {
           id = "a11098af-d352-4cce-8372-2b48b97e6942",
           title = "🎥 Entrevista a SergiGP, de troll a developer!",
           duration = 15.seconds,
-          category = "Interview"
+          category = "Interview",
+          courseId = "e295ecdf-ba69-4672-a34f-400bfc3473df"
         )
       )
 

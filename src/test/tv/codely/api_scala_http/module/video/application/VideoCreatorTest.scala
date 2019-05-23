@@ -12,7 +12,7 @@ private class VideoCreatorTest extends VideoUnitTestCase {
 
       repositoryShouldSaveVideo(video)
 
-      creator.create(video.id, video.title, video.duration, video.category) should be()
+      creator.create(video.id, video.title, video.duration, video.category, video.courseId) should be()
     }
   }
 }
